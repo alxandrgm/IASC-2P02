@@ -34,12 +34,16 @@ scene.add(camera)
   ************/
 
  // testsphere
- const sphereGeometry = new THREE.SphereGeometry(1)
- const sphereMaterial = new THREE.MeshNormalMaterial()
- const testSphere = new THREE.Mesh(sphereGeometry, sphereMaterial)
+ const boxGeometry = new THREE.BoxGeometry(1)
+ const boxMaterial = new THREE.MeshNormalMaterial()
+ const testBox = new THREE.Mesh(boxGeometry, boxMaterial)
 
- scene.add(testSphere)
+ const torusGeometry = new THREE.TorusGeometry(2, 0.2, 16, 100)
+ const torusMaterial = new THREE.MeshNormalMaterial()
+ const testTorus = new THREE.Mesh(torusGeometry, torusMaterial)
 
+ scene.add(testBox)
+ scene.add(testTorus)
  /*******************
  ** ANIMATION LOOP **
  ********************/
@@ -48,13 +52,22 @@ scene.add(camera)
 
  // Animate
 
+ 
+
  const animation = () => 
  {
     // Return elapsedTime
     const elapsedTime = clock.getElapsedTime()
 
     // Animate testSphere
-    testSphere.position.z = Math.sin(elapsedTime)
+    testBox.position.z = Math.sin(elapsedTime)
+    testBox.rotation.x = Math.sin(elapsedTime)
+    testBox.rotation.y = Math.sin(elapsedTime * 2)
+    testBox.scale.x = Math.sin(elapsedTime)
+    testBox.scale.y = Math.sin(elapsedTime)
+    testBox.scale.z = Math.sin(elapsedTime)
+
+    testTorus.rotation.y = elapsedTime
 
     // Renderer
     renderer.render(scene, camera)
