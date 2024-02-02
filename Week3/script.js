@@ -33,7 +33,7 @@ scene.add(camera)
   ** MESHES **
   ************/
 
- // testsphere
+ // testbox/torus
  const boxGeometry = new THREE.BoxGeometry(1)
  const boxMaterial = new THREE.MeshNormalMaterial()
  const testBox = new THREE.Mesh(boxGeometry, boxMaterial)
