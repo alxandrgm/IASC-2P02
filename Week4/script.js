@@ -44,6 +44,7 @@ scene.add(camera)
  })
 
  renderer.setSize(sizes.width, sizes.height)
+ renderer.localClippingEnabled = true
 
  // Controls
  const controls = new OrbitControls(camera, canvas)
@@ -52,6 +53,9 @@ scene.add(camera)
  /************
   ** MESHES **
   ************/
+
+// Clipping Plane
+const clippingPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0)
 
 // plane
 const planeGeometry = new THREE.PlaneGeometry(10, 10, 50, 50)
@@ -67,7 +71,9 @@ scene.add(plane)
 
  // testsphere
  const geometry = new THREE.SphereGeometry(1)
- const material = new THREE.MeshNormalMaterial()
+ const material = new THREE.MeshNormalMaterial({
+    clippingPlanes: [clippingPlane]
+ })
  const testSphere = new THREE.Mesh(geometry, material)
 
  scene.add(testSphere)
@@ -82,6 +88,8 @@ scene.add(plane)
 // UI Object
 const uiObject = {}
 uiObject.play = false
+uiObject.speed = 0.5
+uiObject.distance = 2
 
 // Plane UI
 const planeFolder = ui.addFolder('Plane')
@@ -89,6 +97,9 @@ const planeFolder = ui.addFolder('Plane')
 planeFolder
     .add(planeMaterial, 'wireframe')
 
+    planeFolder
+    .add(renderer, 'localClippingEnabled')
+    .name('Clipping')
 // Sphere UI
 const sphereFolder = ui.addFolder('Sphere')
 
@@ -102,6 +113,21 @@ sphereFolder
 sphereFolder
     .add(uiObject, 'play')
     .name('Animate sphere')
+
+sphereFolder
+    .add(uiObject, 'speed')
+    .min(-5)
+    .max(5)
+    .step(0.1)
+    .name('Speed')
+
+sphereFolder
+    .add(uiObject, 'distance')
+    .min(-5)
+    .max(5)
+    .step(0.1)
+    .name('Distance')
+
 
  /*******************
  ** ANIMATION LOOP **
@@ -118,7 +144,7 @@ const clock = new THREE.Clock()
     // Animate sphere
     if(uiObject.play)
     {
-        testSphere.position.y = Math.sin(elapsedTime * 0.5) * 2
+        testSphere.position.y = Math.sin(elapsedTime * uiObject.speed) * uiObject.distance
     }
 
     // Controls 
