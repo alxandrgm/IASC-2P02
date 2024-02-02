@@ -91,6 +91,14 @@ uiObject.play = false
 uiObject.speed = 0.5
 uiObject.distance = 2
 
+uiObject.reset = () =>
+{
+    uiObject.speed = 0.5
+    uiObject.distance = 2
+    testSphere.position.y = 0
+    uiObject.play = false
+}
+
 // Plane UI
 const planeFolder = ui.addFolder('Plane')
 
@@ -109,10 +117,12 @@ sphereFolder
     .max(5)
     .step(0.1)
     .name('Height')
+    .listen()
 
 sphereFolder
     .add(uiObject, 'play')
     .name('Animate sphere')
+    .listen()
 
 sphereFolder
     .add(uiObject, 'speed')
@@ -120,6 +130,7 @@ sphereFolder
     .max(5)
     .step(0.1)
     .name('Speed')
+    .listen()
 
 sphereFolder
     .add(uiObject, 'distance')
@@ -127,6 +138,11 @@ sphereFolder
     .max(5)
     .step(0.1)
     .name('Distance')
+    .listen()
+
+sphereFolder
+    .add(uiObject, 'reset')
+    .name('Reset')
 
 
  /*******************
