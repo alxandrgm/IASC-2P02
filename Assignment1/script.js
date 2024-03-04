@@ -80,7 +80,7 @@ caveFloor.position.set(0, -2.5, 0)
 scene.add(caveFloor)
 
 // OBJECTS
-// torusKnot
+/* torusKnot
 
 const torusKnotGeometry = new THREE.TorusKnotGeometry(1, 0.2)
 const torusKnotMaterial = new THREE.MeshNormalMaterial()
@@ -88,6 +88,44 @@ const torusKnot = new THREE.Mesh(torusKnotGeometry, torusKnotMaterial)
 torusKnot.position.set(6, 1.5, 0)
 torusKnot.castShadow = true
 scene.add(torusKnot)
+*/
+
+// tube
+class CustomSinCurve extends THREE.Curve {
+
+	constructor( scale = 2 ) {
+		super();
+		this.scale = scale;
+	}
+
+	getPoint( t, optionalTarget = new THREE.Vector3() ) {
+
+		const tx = t * 3 - 1.5;
+		const ty = Math.sin( 3 * Math.PI * t );
+		const tz = 0;
+
+		return optionalTarget.set( tx, ty, tz ).multiplyScalar( this.scale );
+	}
+}
+
+const path = new CustomSinCurve( 0.75 );
+const tubeGeometry = new THREE.TubeGeometry( path, 20, 1, 4, false );
+const tubeMaterial = new THREE.MeshBasicMaterial( { color: 0x800000 } );
+const tube = new THREE.Mesh( tubeGeometry, tubeMaterial );
+tube.position.set(8, 0.5, 0)
+tube.rotation.y = 190;
+tube.castShadow = true
+scene.add( tube );
+
+// sphere
+
+const sphereGeometry = new THREE.SphereGeometry( 0.75, 16, 8 ); 
+const sphereMaterial = new THREE.MeshBasicMaterial( { color: 0xffd699 } ); 
+const sphere = new THREE.Mesh( sphereGeometry, sphereMaterial ); 
+scene.add( sphere );
+sphere.position.set(8, 2.5, 0)
+sphere.castShadow = true
+scene.add( sphere );
 
 // SUN
 const sunGeometry = new THREE.SphereGeometry()
@@ -118,7 +156,7 @@ const directionalLight = new THREE.DirectionalLight(
     0.5
 )
 directionalLight.target = caveWall
-directionalLight.position.set(10, 1.7, 0)
+directionalLight.position.set(11, 1.7, 0)
 directionalLight.castShadow = true
 directionalLight.shadow.mapSize.width = 1024
 directionalLight.shadow.mapSize.height = 1024
@@ -206,9 +244,12 @@ document.querySelector('#restart').onclick = function () {
     domObject.secondChange = false 
     domObject.thirdChange = false 
     domObject.fourthChange = false 
+    tube.position.set(8, 0.5, 0)
+    tube.rotation.y = 190;
+    sphere.position.set(8, 2.5, 0)
 
     // reset directionLight
-    directionalLight.position.set(10, 1.7, 0)
+    directionalLight.position.set(11, 1.7, 0)
 }
 
 
@@ -263,35 +304,48 @@ document.querySelector('#fourth-change').onclick = function () {
 
     // part 1 
     if (domObject.part === 1){
-        camera.position.set(1.1, 0.3, 1.3)
+        camera.position.set(1.0, 0.2, 1.5)
         camera.lookAt(-5, 0, 1.5)
     }
 
     // part 2
     if (domObject.part === 2){
-        camera.position.set(9.9, 3.5, 10.5)
-        camera.lookAt(0, 0, 0)
+        camera.position.set(10, 3.5, 10.5)
+        camera.lookAt(1.5, 1, 3)
     }
 
     // first-change
     if(domObject.firstChange){
-        torusKnot.rotation.y = elapsedTime
+        
+        /*torusKnot.rotation.y = elapsedTime
         torusKnot.rotation.z = elapsedTime
+        */
+
+        tube.position.z = Math.sin(elapsedTime * 0.25) * 10
+        sphere.position.z = Math.sin(elapsedTime * 0.25) * 10
+        // speed is slow to give the feeling of the people in the cave believing that a large amount of time have past and that the giant would never return
     }
     
     // second-change
     if(domObject.secondChange){
-        torusKnot.position.y = Math.sin(elapsedTime  * 0.5) * 6
+        /*torusKnot.position.y = Math.sin(elapsedTime  * 0.5) * 6
+        */
+        tube.position.y = Math.sin(elapsedTime * 1) * 3
+        tube.position.z = 0.5
+        sphere.position.y = (Math.sin(elapsedTime * 1) + 0.66) * 3
+        sphere.position.z = 0.5
+    
     }
 
     // third-change
     if(domObject.thirdChange){
-        torusKnot.position.y = 2
+        tube.rotation.y = elapsedTime
+        sphere.rotation.y = elapsedTime
     }
 
     //fourth-change
     if(domObject.fourthChange){
-        directionalLight.position.y -= elapsedTime * 0.005
+        directionalLight.position.y -= 0.05
     }
 
     // Renderer
