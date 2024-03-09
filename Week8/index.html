@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head>
+    <title>3D Portfolio</title>
+
+    <!-- css -->
+    <link rel= "stylesheet" href = "style.css">
+    <script type = "importmap">
+        {
+            "imports": {
+                "three": "https://ga.jspm.io/npm:three@0.158.0/build/three.module.js",
+                "OrbitControls": "https://ga.jspm.io/npm:three@0.158.0/examples/jsm/controls/OrbitControls.js",
+                "lil-gui": "https://ga.jspm.io/npm:lil-gui@0.19.1/dist/lil-gui.esm.js"
+            }                
+        }
+    </script>
+          <!--- three.js scene --->
+          <script src = "script.js" type = "module"></script>
+</head>
+<body>
+    <!-- Canvas -->
+    <canvas class = "webgl"></canvas>
+
+    <!-- splash -->
+    <section class = "splash">
+        <h1>Alexander Grajales</h1>
+    </section>
+    
+    <!-- content -->
+    <section class = "content" id = "first">
+        <h1>About me</h1>
+        <p>I like to play video games and watch Youtube. I'm hoping I can make my own video games someday. </p>
+        <p><span class = "clickable" id = "click1">View Projects</span></p>
+
+    </section>
+
+    <section class = "content hidden" id = "second">
+            <h1>Interactive Essay</h1>
+            <p>This section talks about my interpretation of Plato's Allegory of the Cave. I also talk about Nick Sosanis's concept of Flatness and Seeing Doubles and what it means to me.
+            </p>
+            <p><span class = "clickable" id = "click2">Next project</span></p>
+    </section>
+
+    <section class = "content hidden" id = "third">
+            <h1> Data Visualization</h1>
+            <p>This section will talk about Harry Potter and the Philosopher's Stone (Sorcerer's Stone).</p>
+            <p><span class = "clickable" id = "click3">Back to Home</span></p>
+    </section>
+</body>
