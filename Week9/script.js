@@ -199,11 +199,11 @@ const createInteractionFolders = () =>
     .name(`${uiobj.term1}`)
 
     cubesFolder
-    .add(redMaterial, 'visible')
+    .add(greenMaterial, 'visible')
     .name(`${uiobj.term2}`)
 
     cubesFolder
-    .add(redMaterial, 'visible')
+    .add(blueMaterial, 'visible')
     .name(`${uiobj.term3}`)
 
     // Camera Folder
