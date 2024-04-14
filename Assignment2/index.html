@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<head>
+    <title>Data Visualization</title>
+
+    <!-- css -->
+    <link rel= "stylesheet" href = "style.css">
+
+    <!-- three.js importmap -->
+    <script type = "importmap">
+        {
+            "imports": {
+                "three": "https://ga.jspm.io/npm:three@0.158.0/build/three.module.js",
+                "OrbitControls": "https://ga.jspm.io/npm:three@0.158.0/examples/jsm/controls/OrbitControls.js",
+                "lil-gui": "https://ga.jspm.io/npm:lil-gui@0.19.1/dist/lil-gui.esm.js"
+            }                
+        }
+    </script>
+          <!--- DataViz 1 --->
+          <script src = "script.js" type = "module"></script>
+
+          <!--- DataViz 2 --->
+          <script src = "script2.js" type = "module"></script>
+</head>
+<body>
+    <h1>Data Visualization for Alice's Adventures in Wonderland</h1>
+    <h2>Alexander Grajales</h2>
+
+    <p>The text that my data visualization is based on is Alice’s Adventures in Wonderland by Lewis Carroll. Alice’s Adventure in Wonderland is a book about maturity and finding yourself. Alice traverses through a strange, unfamiliar land after following a white rabbit with a vest through a rabbit hole. She has a hard time communicating with any of the characters in wonderland as none of them make sense and force her into doing different tasks or to eat/drink things and find out what happens after. A lot of the things she tries end up causing her to grow or shrink in size. She meets characters such as the Cheshire Cat, the Mad Hatter, and the Queen of Hearts. These characters all act rude and cold toward Alice. Eventually, one of the characters is told to stand trial before the Queen and King for stealing tarts and Alice and the other characters are held as witnesses to the trial. Alice gets fed up with the trial, the Queen tries to behead Alice, and Alice ends up growing to her original size and knocks all the card soldiers down. Afterwards, she wakes up on her older sister’s lap and retells what she believes is her dream of Wonderland. The whole feel of the book is a dream-like state where a lot of what you're reading doesn't make sense but you go along with it. I would say this is how Alice felt experiencing everything.  
+    </p>
+
+    <p>I chose this text because I was searching for books on one of the websites that listed down books under public domain. I ended up finding Alice’s Adventures in Wonderland listed and decided it would be an interesting book I would create my data visualization around. I also haven't heard anything about the book or seen the cartoon or movie in years. </p>
+
+    <!-- dataviz 1-->
+    <div class = "canvas-container">
+        <h2>Objects and Places in Alice's Adventures in Wonderland</h2>
+        <!--
+        <ul>
+            <li id = "red">Rabbit</li>
+            <li  id = "green">Mad</li>
+            <li  id = "blue">Garden</li>
+        </ul>
+         --> 
+        <canvas class = "webgl"></canvas>
+        <div id = "parent1"></div>
+        <p>Left click and drag to rotate. Right click and drag to move. Scroll to zoom</p>
+         
+
+    </div>
+
+    <p>For my first data visualization, I am looking into the places and objects in Alice’s Adventures in Wonderland. I used the words “rabbit”, “wonderland”, and “garden” as my three words for this first section. The bottom part of the visualization is the beginning of the book, the top is the end. The spheres represent their location in the book and their importance to the story. </p>
+
+    <p>When interacting with the visualization, you notice that there is a lot of empty space between all the words. This means that a lot of these words don’t interact with each other. Both the garden and wonderland itself are places that Alice explores within the book. Wonderland appears at the beginning and end signifying that within those two points, Alice is actually instead Wonderland and she explores it rather than thinking about the place itself. The garden can be interpreted the same way but you also see that it appears throughout as one of Alice’s goals is to reach this garden that she’s just barely out of reach. </p>
+
+    <p>The rabbit is something that Alice is looking for throughout the book. She notices a strange rabbit with a vest and pocket watch. In the visualization, it is something that you can see being mentioned often as Alice tries to figure out where she is. As Alice shifts her objective towards locating the garden, you notice that the rabbit isn’t mentioned as much or at all in the middle, with the garden being the focal point. Once the rabbit is reintroduced, it gets mentioned often. </p>
+
+    <!-- dataviz 2-->
+    <div class = "canvas-container">
+        <h2>People in Alice's Adventures in Wonderland</h2>
+        <canvas class = "webgl2"></canvas>
+        <div id = "parent2"></div>
+        <p>Left click and drag to rotate. Right click and drag to move. Scroll to zoom</p>
+        
+    </div>
+
+    <p>There are a couple of differences between the first visualization and the second. The first visualization shows off objects and places in the book while the second shows off some of the characters mentioned. The second visualization also has different colours, is a cube instead of spheres, and the position of the cubes are left to right instead of down to up for where the words take place in the book. The words I am using for the second visualization are “hatter”, “cheshire”, and “queen”.</p>
+
+    <p>For my first insight, I noticed that all of the characters do not appear at the beginning of the book. All of the cubes are in the center and the right side so they all appear after the midpoint and end of the book. They all take on an importance later in the story so they slowly get mentioned until they appear as an actual character for Alice to interact with. I also used the animation to show that as quickly as the characters appear to Alice, they disappear just as fast. The cubes disappear and reappear in the Data Visualization to show that although the characters might be gone, they could come back later on in the book.</p>
+
+    <p>I also noticed that all the words are close together. This means that they all interact with each other in the book. For example, the Queen of Hearts and the Mad Hatter appear in the same location. The Mad Hatter is a witness to the trial that’s taking place for the Knave of Hearts. The Queen and King are the ones to hold the trial. The Queen also starts to get mentioned around the time that the Chesire cat appears. The Cheshire cat does not get mentioned at the end and only briefly in the middle. The Queen is one of the last things mentioned in the book before Alice gets back to her world as she has her final confrontation with the Queen.</p>
+
+    <div class = "canvas-container">
+        <h2>Conclusion</h2>
+    </div>
+
+    <p>One of the things I wanted to do for my first visualization was give it an animation. I could not really think of an animation to tie into my visualization in a way that would look nice. I also think it would cost me a lot of time to figure out and I might not get the result I want so I feel like it would be wasted time. I also feel like I had a difficulty fully expressing myself with my ideas for the visualization and getting something good to match for the book.</p>
+
+    <p>As for something I would like to improve for my visualization in the future, I would like to make it look unique. I did change a little from the original video template but it was very small. I feel like with enough time, practice, and imagination, I could come up with something I would be more proud of and be able to call fully mine. I still liked how my visualizations turned out but next time I feel like I could add even more.</p>
+</body>
